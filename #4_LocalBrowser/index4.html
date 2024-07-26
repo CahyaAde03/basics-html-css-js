@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Register</title>
+</head>
+<style>
+    #root {
+        background-color: aqua;
+        font-size: 2em;
+        text-align: center;
+        height: 100vh;
+    }
+</style>
+
+<body>
+    <!-- Konten -->
+
+    <!-- end Konten -->
+
+    <div id="root">
+        <input type="text" placeholder="username" id="userInput">
+        <input type="password" placeholder="password" id="passwordInput">
+        <button onclick="onLogin()" id="buttonLogin">LOGIN</button>
+        <button onclick="onLogout()" id="buttonLogout">LOGOUT</button>
+        <br />
+        <h2 id="admin">LOGIN SEBAGAI ADMIN</h2>
+        <h2 id="common">LOGIN BIASA</h2>
+    </div>
+
+    <script type="application/javascript">
+        let buttonLogin = document.getElementById('buttonLogin');
+        let buttonLogout = document.getElementById('buttonLogout');
+        let userInput = document.getElementById('userInput');
+        let passwordInput = document.getElementById('passwordInput');
+        let admin = document.getElementById('admin');
+        let common = document.getElementById('common');
+
+
+        admin.style.display = 'none';
+        common.style.display = 'none';
+        buttonLogout.style.display = 'none';
+
+        function onLogin() {
+            // console.log(userInput.value);
+            // console.log(passwordInput.value);
+            buttonLogout.style.display = 'block';
+            localStorage.setItem('username', userInput.value);
+
+            if (userInput.value == 'admin' && passwordInput.value == 'admin1234#') {
+                buttonLogin.style.display = 'none';
+                userInput.style.display = 'none';
+                passwordInput.style.display = 'none';
+                localStorage.setItem('role', 'admin');
+                admin.style.display = 'block';
+                common.style.display = 'none';
+
+            } else {
+                buttonLogin.style.display = 'none';
+                userInput.style.display = 'none';
+                passwordInput.style.display = 'none';
+                localStorage.setItem('role', 'common');
+                admin.style.display = 'none';
+                common.style.display = 'block';
+            }
+        }
+
+        if (localStorage.getItem('username',)) {
+            buttonLogin.style.display = 'none';
+            buttonLogout.style.display = 'block'
+            userInput.style.display = 'none';
+            passwordInput.style.display = 'none';
+
+            if (localStorage.getItem('role') == 'admin') {
+                admin.style.display = 'block';
+                common.style.display = 'none';
+
+            } else {
+                admin.style.display = 'none';
+                common.style.display = 'block';
+            }
+        }
+        function onLogout() {
+            localStorage.clear();
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
+
+
+
+<!-- TUGAS 2
+1. Tambahkan role (diatas hanya admin dan common) baru sebanyak mungkin
+2. Tampilkan sesuatu yang berbeda setiap role
+3. Membuat menu pendaftaran, hanya user terdaftar saja yang dapat login -->

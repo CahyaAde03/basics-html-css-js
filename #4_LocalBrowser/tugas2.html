@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .background-image {
+            position: absolute;
+            inset: 0;
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-kontainer">
+        <div class="relative">
+            <img alt="Background" src="images/gedung-biru.jpg" class="background-image" />
+
+            <div class="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+                <div class="mx-auto max-w-lg bg-white bg-opacity-90 p-8 rounded-lg shadow-lg">
+                    <h1 class="text-center text-2xl font-bold text-red-600 sm:text-3xl" id="welcome">Selamat Datang</h1>
+                    <p class="mx-auto mt-4 max-w-md text-center text-gray-600" id="kataFormulir">
+                        Formulir absensi pegawai Perusahaan X
+                    </p>
+                    <form id="loginForm" class="mt-6 space-y-4">
+                        <p class="text-center text-lg font-medium text-gray-600" id="paragraf">Masuk ke Akun Anda</p>
+                        <div>
+                            <label for="inputName" class="sr-only"></label>
+                            <div class="relative">
+                                <input type="text" class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                                    placeholder="Enter name" id="inputName" required />
+                                <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d=" 4a4 4 0 10-8 0 4 4 0 008 0zM12 8v12m0 0h8m-8 0H4" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="inputPass" class="sr-only">Password</label>
+                            <div class="relative">
+                                <input type="password"
+                                    class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
+                                    placeholder="Enter password" id="inputPass" required />
+                                <span class="absolute inset-y-0 right-0 grid place-content-center px-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d=" 11c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zM12 11V8a4 4 0 10-8 0v3h8z" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="error" class="hidden text-red-600 text-center">Nama atau Kata sandi salah.</div>
+                        <button type="button" onclick="onLogin()"
+                            class="block w-full rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-white"
+                            id="signinButton" disabled>
+                            Masuk
+                        </button>
+                        <button type="button" onclick="onLogout()"
+                            class="hidden block w-full rounded-lg bg-red-500 px-5 py-3 text-sm font-medium text-white"
+                            id="signoutButton">
+                            Kembali
+                        </button>
+                        <div id="welcomeMessages" class="mt-8 text-center space-y-2 hidden">
+                            <h1 class="text-center text-2xl font-bold text-gray-600 sm:text-3xl px-4 py-16 sm:px-6 lg:px-8"
+                                id="president">Selamat Datang President</h1>
+                            <h1 class="text-center text-2xl font-bold text-gray-600 sm:text-3xl px-4 py-16 sm:px-6 lg:px-8"
+                                id="director">Selamat Datang Director</h1>
+                            <h1 class="text-center text-2xl font-bold text-gray-600 sm:text-3xl px-4 py-16 sm:px-6 lg:px-8"
+                                id="manager">Selamat Datang sebagai Manager</h1>
+                            <h1 class="text-center text-2xl font-bold text-gray-600 sm:text-3xl px-4 py-16 sm:px-6 lg:px-8"
+                                id="ceo">Selamat Datang sebagai CEO</h1>
+                            <h1 class="text-center text-2xl font-bold text-gray-600 sm:text-3xl px-4 py-16 sm:px-6 lg:px-8"
+                                id="employee">Absensi Anda Ter-Input</h1>
+                            <h1 class="text-center text-2xl font-bold text-gray-600 sm:text-3xl px-4 py-16 sm:px-6 lg:px-8"
+                                id="security">Absensi Anda Ter-Input</h1>
+                            <h1 class="text-center text-2xl font-bold text-gray-600 sm:text-3xl px-4 py-16 sm:px-6 lg:px-8"
+                                id="cleaningService">Absensi Anda Ter-Input</h1>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="application/javascript">
+        let signinButton = document.getElementById('signinButton');
+        let signoutButton = document.getElementById('signoutButton');
+        let inputName = document.getElementById('inputName');
+        let inputPass = document.getElementById('inputPass');
+        let error = document.getElementById('error');
+        let welcomeMessages = document.getElementById('welcomeMessages');
+        let roles = ['president', 'director', 'manager', 'ceo', 'employee', 'security', 'cleaningService'];
+        let kataFormulir = document.getElementById('kataFormulir');
+        let paragraf = document.getElementById('paragraf');
+        let welcome = document.getElementById('welcome');
+        inputName.addEventListener('input', toggleSigninButton);
+        inputPass.addEventListener('input', toggleSigninButton);
+
+        function toggleSigninButton() {
+            signinButton.disabled = !(inputName.value && inputPass.value);
+            error.style.display = 'none';
+        }
+
+        function hideAllMessages() {
+            roles.forEach(role => {
+                document.getElementById(role).style.display = 'none';
+            });
+        }
+
+        function onLogin() {
+            let name = inputName.value.toLowerCase();
+            let pass = inputPass.value;
+
+            hideAllMessages();
+
+            if (name == 'president' && pass == 'Amirmustofa') {
+                document.getElementById('president').style.display = 'block';
+                localStorage.setItem('role', 'president');
+            } else if (name == 'director' && pass == 'Wawansujaka') {
+                document.getElementById('director').style.display = 'block';
+                localStorage.setItem('role', 'director');
+            } else if (name == 'manager' && pass == 'hendra1234') {
+                document.getElementById('manager').style.display = 'block';
+                localStorage.setItem('role', 'manager');
+            } else if (name == 'ceo' && pass == 'Lindakumala') {
+                document.getElementById('ceo').style.display = 'block';
+                localStorage.setItem('role', 'CEO');
+            } else if (name == 'employee' && pass == 'id8888') {
+                document.getElementById('employee').style.display = 'block';
+                localStorage.setItem('role', 'employee');
+            } else if (name == 'security' && pass == 'id4444') {
+                document.getElementById('security').style.display = 'block';
+                localStorage.setItem('role', 'security');
+            } else if (name == 'cleaningService' && pass == 'id123') {
+                document.getElementById('cleaningService').style.display = 'block';
+                localStorage.setItem('role', 'cleaningService');
+
+            } else {
+                error.style.display = 'block';
+                return
+            }
+
+            welcome.style.display = 'none'
+            kataFormulir.style.display = 'none';
+            paragraf.style.display = 'none';
+            signinButton.style.display = 'none';
+            signoutButton.style.display = 'block';
+            inputName.style.display = 'none';
+            inputPass.style.display = 'none';
+            welcomeMessages.style.display = 'block';
+            document.querySelector('.background-image').style.zIndex = '-1';
+        }
+
+        function onLogout() {
+            welcome.style.display = 'block'
+            kataFormulir.style.display = 'block';
+            paragraf.style.display = 'block';
+            signinButton.style.display = 'block';
+            signoutButton.style.display = 'none';
+            inputName.style.display = 'block';
+            inputPass.style.display = 'block';
+            welcomeMessages.style.display = 'none';
+            error.style.display = 'none'
+            localStorage.getItem('role');
+            inputName.value = '';
+            inputPass.value = '';
+            document.querySelector('.background-image').style.zIndex = '-1';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let role = localStorage.getItem('role');
+            if (role) {
+                onLogin();
+            } else {
+                onLogout();
+            }
+        });
+    </script>
+</body>
+
+</html>

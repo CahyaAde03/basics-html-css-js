@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode Browser</title>
+    <link href="styletugas.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-div">
+        <nav>
+            <a onclick="refresh()" id="home"> HOME </a>
+            <a onclick="modeGelap()" id="modeDark">Mode Gelap </a>
+            <a onclick="modeBaca()" id="modeRead">Mode Baca </a>
+        </nav>
+        <h1>SELAMAT DATANG</h1>
+        <p class="infostyle" id="info"></p>
+    </div>
+
+    <script>
+        let body = document.body
+        let info = document.getElementById('info');
+        let modeDark = document.getElementById('modeDark');
+        let modeRead = document.getElementById('modeRead');
+        let home = document.getElementById('home');
+        let gelapLimit = 5;
+        let gelapCounter = 0;
+        let ReadLimit = 5;
+        let readCounter = 0;
+
+        let gelapPengingatSisa;
+        let readPengingatSisa;
+
+        function modeGelap() {
+            gelapCounter++;
+            if (gelapCounter >= gelapLimit) {
+                modeDark.style.display = 'none';
+                checkRestart();
+            } else {
+                body.classList.toggle('gelap')
+                if (body.classList.contains('gelap')) {
+                    modeDark.textContent = 'Mode Terang';
+                } else {
+                    modeDark.textContent = 'Mode Gelap'
+                }
+            }
+        }
+
+        function modeBaca() {
+            readCounter++;
+            if (readCounter >= ReadLimit) {
+                modeRead.style.display = 'none';
+                checkRestart();
+            } else {
+                body.classList.toggle('baca')
+                if (body.classList.contains('baca')) {
+                    modeRead.textContent = 'Mode Biasa';
+                } else {
+                    modeRead.textContent = 'Mode Baca'
+                }
+            }
+        }
+
+        function checkRestart() {
+            if (gelapCounter >= gelapLimit && readCounter >= ReadLimit) {
+                home.textContent = 'RESTART'
+            }
+        }
+        function refresh() {
+            location.reload();
+        }
+    </script>
+
+</body>
+
+</html>

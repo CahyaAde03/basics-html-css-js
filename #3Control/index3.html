@@ -1,0 +1,68 @@
+<!-- Styling dengan Tailwind dan HyperUI -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>onOffLampu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="flex justify-center items-center min-h-screen bg-gray-700 gap-4">
+        <!-- lampu 1 -->
+        <div class="flex flex-col justify-center p-2 m-2 items-center">
+            <img src="asset/images/off.png" alt="" id="lampu1" />
+            <label for="default-toggle1"
+                class=" mt-5 relative inline-block h-8 w-14 cursor-pointer rounded-full bg-gray-300 transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-blue-500">
+                <input type="checkbox" id="default-toggle1" class="peer sr-only" onchange="Saklar()" />
+
+                <span
+                    class="absolute inset-y-0 start-0 m-1 size-6 rounded-full bg-white transition-all peer-checked:start-6"></span>
+            </label>
+        </div>
+
+        <!-- lampu 2 -->
+        <div class="flex flex-col justify-center p-2 m-2 items-center">
+            <img src="asset/images/off.png" alt="" id="lampu2" />
+            <label for="default-toggle2"
+                class=" mt-5 relative inline-block h-8 w-14 cursor-pointer rounded-full bg-gray-300 transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-blue-500">
+                <input type="checkbox" id="default-toggle2" class="peer sr-only" onchange="Saklar()" />
+
+                <span
+                    class="absolute inset-y-0 start-0 m-1 size-6 rounded-full bg-white transition-all peer-checked:start-6"></span>
+        </div>
+
+        <!-- lampu 3 -->
+        <div class="flex flex-col justify-center p-2 m-2 items-center">
+            <img src="asset/images/off.png" alt="" id="lampu3" />
+            <label for="default-toggle3"
+                class=" mt-5 relative inline-block h-8 w-14 cursor-pointer rounded-full bg-gray-300 transition [-webkit-tap-highlight-color:_transparent] has-[:checked]:bg-blue-500">
+                <input type="checkbox" id="default-toggle3" class="peer sr-only" onchange="Saklar()" />
+
+                <span
+                    class="absolute inset-y-0 start-0 m-1 size-6 rounded-full bg-white transition-all peer-checked:start-6"></span>
+        </div>
+
+    </div>
+
+    <!-- Script nyalakan lampu javascript -->
+    <script src="saklar.js" type="application/javascript"></script>
+    <!-- end -->
+
+</body>
+
+</html>
+
+
+<!-- TUGAS 1 -->
+<!-- 1. Membuat 10 Lampu dengan fungsi sama seperti contoh pembelajaran sebelumnya
+2. Menyalakan dengan grup:
+    a. Ruang Keluarga 3 Lampu
+    b. Ruang Makan 2 Lampu 
+    c. Kamar Tidur 1 Lampu
+    d. Ruang Tamu 4 Lampu
+3. Bonus Tampilan dibuat menarik 
+
+NOTE: Tombol Saklar per Lampu dan per Grup-->

@@ -1,0 +1,80 @@
+/** @format */
+
+*,
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+    transition: all .4s ease-in-out;
+}
+
+/* perubahan warna menjadi putih */
+body[style*='rgb(0, 49, 53)'].judul{
+    color: white;
+}
+
+.judul {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.box {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  background-color: antiquewhite;
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.bulat {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dark-blue {
+  background-color: #003135;
+}
+
+.blue {
+  background-color: #024950;
+}
+
+.orange {
+  background-color: #964734;
+}
+
+.mint {
+  background-color: #0fa4af;
+}
+
+.ligth-mint {
+  background-color: #afdde5;
+}
+
+.btn{
+    padding: 16px;
+    border: none;
+    background-color: antiquewhite;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 20px;
+    font-weight: 700;
+}

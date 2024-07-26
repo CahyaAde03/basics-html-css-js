@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style5.css" rel="stylesheet" />
+    <title>Dark Mode</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="refresh()" id="home">HOME</a>
+            <a onclick="darkMode()" id="mode">MODE</a>
+        </nav>
+        <h1>SELAMAT DATANG</h1>
+        <p class="infostyle" id="info"></p>
+    </div>
+
+    <script>
+        let body = document.body;
+        let info = document.getElementById('info');
+        let mode = document.getElementById('mode');
+        let home = document.getElementById('home');
+        const gelapLimit = 5;
+        let gelapCounter = 0;
+
+        let gelapPengingatSisa;
+
+        function darkMode() {
+            if (gelapPengingatSisa == 1) {
+                // console.log('mode gelap habis')
+                mode.style.display = 'none'
+                home.textContent = 'RESTART'
+                info.textContent = 'FITUR DARKMODE HABIS MOHON REFRESH'
+                return;
+            }
+            gelapCounter += 1;
+            gelapPengingatSisa = gelapLimit - gelapCounter;
+            // console.log('darkmode klik:', gelapCounter);
+            // console.log('kesempatan:', gelapPengingatSisa)
+
+            // render ke info element
+            info.textContent = `Dark Mode dipakai ${gelapCounter} kali, sisa ${gelapPengingatSisa} kali`
+            body.classList.toggle('gelap');
+        }
+
+        function refresh(){
+            location.reload();
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!-- TUGAS 6
+1. Tulisan MODE diganti menjadi Mode-Dark/ Mode-Light pas ingin di click
+2. Tambahkan Menu Mode Lain (mode membaca, berani dan lain2) di menu nav -->

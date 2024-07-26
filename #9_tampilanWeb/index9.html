@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warna Tampilan web</title>
+    <link rel="stylesheet" href="style9.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="judul"> PILIH WARNA</div>
+        <div class="box">
+            <div class="bulat dark-blue"></div>
+            <div class="bulat blue"></div>
+            <div class="bulat orange"></div>
+            <div class="bulat mint"></div>
+            <div class="bulat ligth-mint"></div>
+        </div>
+        <div>
+            <button onclick="refresh()" class="btn">RELOAD</button>
+        </div>
+    </div>
+
+    <script>
+        //mengubah warna web
+        const bulats = document.querySelectorAll('.bulat');
+
+        function warnafont() {
+            const backgroundColor = document.body.style.backgroundColor;
+            const judul = document.querySelector('.judul');
+            if (backgroundColor == 'rgb(0, 49, 53)') {
+                judul.style.color = 'white';
+            } else if (backgroundColor == 'rgb(2, 73, 80)') {
+                judul.style.color = 'white'
+            } else {
+                judul.style.color = 'black'
+            }
+        }
+
+        function refresh(){
+            location.reload();
+        }
+
+        bulats.forEach(bulat => {
+            bulat.addEventListener('click', (view) => {
+                const computedStyle = window.getComputedStyle(view.target)
+                console.log(computedStyle.backgroundColor) //menampilkan RGB warna dari target 
+                document.body.style.backgroundColor = computedStyle.backgroundColor
+                warnafont();
+            })
+        })
+    </script>
+</body>
+
+</html>
